@@ -57,13 +57,14 @@ ifneq ($(KERNELRELEASE),)
 obj-m := npreal2.o
 else
 KDIR	:= /lib/modules/$(shell uname -r)/build
+#KDIR	:= /usr/src/linux-source-3.16
 PWD	:= $(shell pwd)
 
 module:
 	$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) modules
-	cp -p npreal2.ko /lib/modules/$(shell uname -r)/kernel/drivers/char/
+#	cp -p npreal2.ko /lib/modules/$(shell uname -r)/kernel/drivers/char/
 #	cp -p npreal2.ko /lib/modules/$(shell uname -r)/misc/
-	depmod -a
+#	depmod -a
 
 endif
 
